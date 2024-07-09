@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Machine Learning KNN
+{% endblock %}
+
+{% block body %}
+{% include 'navbar.html' %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}<br>
+<div class="alert container alert-danger alert-dismissible fade show" role="alert">
+	<strong>{{message}}</strong>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div id="pertanyaan"
+	class="container flex flex-col items-center mx-auto h-[87dvh] max-h-screen max-w-[720px] px-4 sm:px-0 pt-20">
+	<div class="flex-col p-6 my-8 bg-blue-100 border-2 border-black w-full rounded-2xl shadow-solid">
+		<div class="flex justify-center">
+			<h1 id="pertanyaan" class="font-montserrat font-bold text-xl text-center align-middle uppercase">
+				Hasil prediksinya adalah {{ pred }}
+			</h1>
+		</div>
+	</div>
+
+	<a href="/pertanyaan/1"
+		class="flex justify-center p-2.5 mb-2.5 bg-blue-100 hover:bg-blue-200 border-2 border-black w-full rounded-xl shadow-solid hover:no-underline">
+		Isi kembali pertanyaan
+	</a>
+
+	<a href="/"
+		class="flex justify-center p-2.5 mb-8 bg-blue-100 hover:bg-blue-200 border-2 border-black w-full rounded-xl shadow-solid hover:no-underline">
+		Kembali ke home
+	</a>
+
+	<div class="relative overflow-x-auto w-full">
+		{{ inputan | safe }}
+	</div>
+
+</div>
+{% endblock %}
